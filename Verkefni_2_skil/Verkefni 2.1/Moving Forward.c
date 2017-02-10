@@ -24,30 +24,31 @@
 |*    Motor Port 3        leftMotor           VEX 3-wire module     Left side motor                   *|
 \*-----------------------------------------------------------------------------------------------4246-*/
 
+void drive(int time,int left,int right){
+		motor[rightMotor] = right;
+		motor[leftMotor]  = left;
+		wait1Msec(time);
+}
+void stopMotors(){
+		motor(rightMotor) = 0;
+		motor(leftMotor) = 0;
+		wait1Msec(1000);
+}
 
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 task main()
 {
 	const int TIME = 1400;
-	const int BREAKTIME = 1000;
 
 	wait1Msec(TIME);
 	for(int i = 1; i < 6; i++){
-		motor[rightMotor] = 127;
-		motor[leftMotor]  = 127;
-		wait1Msec(i * TIME);
+		drive(i * TIME,127,127);
 
-		motor(rightMotor) = 0;
-		motor(leftMotor) = 0;
-		wait1Msec(BREAKTIME);
+		stopMotors();
 
-		motor[rightMotor] = -127;
-		motor[leftMotor]  = -127;
-		wait1Msec(i * TIME);
+		drive(i * TIME,-127,-127);
 
-		motor(rightMotor) = 0;
-		motor(leftMotor) = 0;
-		wait1Msec(BREAKTIME);
+		stopMotors();
 
 	}
 }												        // Program ends, and the robot stops
