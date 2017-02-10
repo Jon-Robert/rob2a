@@ -1,0 +1,17 @@
+void driveForward/Backwards(dist)
+	clear sensors
+	move forward depending on sensorValue for encoders while that value is less then dist
+;
+
+void stopMotors
+	stop both motors for 1.5sec
+;
+
+MAIN
+for i 0-5
+	dist += (some predifined distance for 500m)
+	driveforward
+	stopmotors
+	drivebackwards
+	stop motors
+;
