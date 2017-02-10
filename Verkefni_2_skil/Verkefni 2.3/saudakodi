@@ -1,0 +1,36 @@
+Maze
+
+driveForward(dist)
+	clear sensors
+	while sensors is less then dist
+		move straight forward depending on sensor values
+;
+
+stopMotors()
+	stopmotors
+;
+
+turn90Degrees(left,right)
+	motorLeft = left
+	motorRight = right
+	wait some time
+;
+
+MAIN
+	driveForward(dist); // drives 500m forward
+	stopMotors(); //Stops all motors
+	turn90Degrees(-60,60); //90deg turn to the right
+	stopMotors(); //stops all motors
+
+	driveForward(dist); // drives 500m forward
+	stopMotors(); //stops all motors
+	turn90Degrees(60,-60);//90deg turn to the left
+	stopMotors(); //stops all motors
+
+	driveForward(dist); // drives 500m forward
+	stopMotors(); //stops all motors
+	turn90Degrees(60,-60); //90deg turn to the left
+	stopMotors(); //stops all motors
+
+	driveForward(dist);// drives 500m forward
+	stopMotors(); //stops all motors

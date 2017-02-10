@@ -1,0 +1,16 @@
+Beeptest 0,5m
+
+drive(time,leftMotor,rightMotor)
+	drive forward or backwards
+;
+
+stopMotors()
+	stop motors...
+;
+
+MAIN
+
+for 0-4
+drive time * i
+stop
+drive time * i
