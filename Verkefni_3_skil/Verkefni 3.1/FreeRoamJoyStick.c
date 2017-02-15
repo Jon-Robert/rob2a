@@ -43,11 +43,22 @@
 		-
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 
+task checkIfStopped()
+{
+	while(true){
+		if(vexRT[Btn8U] == 1)
+		{
+			StopAllTasks();
+		}
+	}
+}
+
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 task main ()
 {
+	startTask(checkIfStopped);
 
-	while(1 == 1)
+	while(true)
 	{
 		motor[leftMotor]  = (vexRT[Ch3] + vexRT[Ch4])/2;  // (y + x)/2
 		motor[rightMotor] = (vexRT[Ch3] - vexRT[Ch4])/2;  // (y - x)/2
