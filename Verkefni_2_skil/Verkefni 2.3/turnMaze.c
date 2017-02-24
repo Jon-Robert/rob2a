@@ -56,13 +56,13 @@ void driveForward(int dist)
 void stopMotors(){
 	motor[rightMotor] = 0; //Stop the right motor
   motor[leftMotor] = 0; //Stop the left motor
-  wait1Msec(1500); //For 1 second
+  wait1Msec(800); //For 1 second
 };
 
 void turn90Degrees(int left,int right){
 	motor[leftMotor] = left;
   motor[rightMotor] = right;
-  wait1Msec(920);
+  wait1Msec(880);
 }
 //+++++++++++++++++++++++++++++++++++++++++++++| MAIN |+++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -76,12 +76,12 @@ task main()
 
 	driveForward(dist); // drives 500m forward
 	stopMotors(); //stops all motors
-	turn90Degrees(60,-60);//90deg turn to the left
+	turn90Degrees(60,-80);//90deg turn to the left, our right motor was not as good as the left one so it needed a little boost
 	stopMotors(); //stops all motors
 
 	driveForward(dist); // drives 500m forward
 	stopMotors(); //stops all motors
-	turn90Degrees(60,-60); //90deg turn to the left
+	turn90Degrees(60,-80);//90deg turn to the left, our right motor was not as good as the left one so it needed a little boost
 	stopMotors(); //stops all motors
 
 	driveForward(dist);// drives 500m forward
