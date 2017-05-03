@@ -1,21 +1,11 @@
-/*
-@ Code for interfacing Alcohol Gas Sensor MQ-3 with Arduino
-@ Code by Daniel Spillere Andrade and Daniel Amato Zabotti
-@ daniel@danielandrade.net / danielzabotti@gmail.com
-@     www.DanielAndrade.net
-*/
-
 
 const int analogPin = 0;    // the pin that the potentiometer is attached to
 const int ledCount = 10;    // the number of LEDs in the bar graph
 
-int ledPins[] = {
-  10,9,8,7,6,5,4,3,2,1 // Here we have the number of LEDs to use in the BarGraph
-  };   
-
+int ledPins[] = {11,10,9,8,7,6,5,4,3,2}; //Digital pins for the led lights, first green bulb is #11
 
 void setup() {
-
+  Serial.begin(9600);//sets the baud rate
   for (int thisLed = 0; thisLed < ledCount; thisLed++) {
     pinMode(ledPins[thisLed], OUTPUT);
   }}
@@ -23,8 +13,9 @@ void setup() {
 void loop() {
   //This is the code to light up LED's
   int sensorReading = analogRead(analogPin);
+  Serial.println(sensorReading);
 
-  int ledLevel = map(sensorReading, 500, 1023, 0, ledCount);
+  int ledLevel = map(sensorReading, 100, 2000, 0, ledCount); //100ppm to 2000ppm, 2000ppm is high Co2 can cause drowsiness and is poor air
 
 
   for (int thisLed = 0; thisLed < ledCount; thisLed++) {
@@ -37,4 +28,6 @@ void loop() {
       digitalWrite(ledPins[thisLed], LOW);
     }  
   }
+  Serial.print("led Level: ");
+  Serial.println(ledLevel);
 }

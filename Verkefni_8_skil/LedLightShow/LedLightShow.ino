@@ -11,7 +11,7 @@ void setup() {
 void loop() {
   for (int thisLed = 0; thisLed < ledCount; thisLed++) { //Loop through led pins
       digitalWrite(ledPins[thisLed], HIGH); //Set thisled to high
-      delay(1000); //Wait 1 second
+      delay(100); //Wait 1 second
       digitalWrite(ledPins[thisLed], LOW);  //Set thisLed to low
   }
 }
